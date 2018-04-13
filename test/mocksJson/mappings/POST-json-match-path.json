@@ -1,0 +1,16 @@
+{
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPath": "/path",
+    "bodyPatterns": {
+      "matchesJsonPath": "$.name"
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

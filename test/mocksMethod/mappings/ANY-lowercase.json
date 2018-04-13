@@ -1,0 +1,13 @@
+{
+  "request": {
+    "priority": 1,
+    "method": "any",
+    "url": "/app/url/any/lowercase"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

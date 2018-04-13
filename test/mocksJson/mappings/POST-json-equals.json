@@ -1,0 +1,18 @@
+{
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPath": "/login",
+    "bodyPatterns": {
+      "equalToJson": {
+        "total_results": 4
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

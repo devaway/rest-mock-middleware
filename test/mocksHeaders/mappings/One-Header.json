@@ -1,0 +1,15 @@
+{
+  "request": {
+    "priority": 1,
+    "url": "/app/url/one",
+    "headers": {
+      "Content-type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

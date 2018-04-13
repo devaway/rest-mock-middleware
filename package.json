@@ -1,6 +1,6 @@
 {
   "name": "rest-mock-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/GFI-Informatique/rest-mock-middleware.git"
@@ -9,11 +9,19 @@
   "author": "José Javier Martínez Domene <jjmartinez@gfi.es>",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "jsonpath": "1.0.0",
+    "node-json-equal": "0.1.0"
   },
   "devDependencies": {
+    "express": "^4.16.3",
+    "supertest": "*",
+    "mocha": "*",
+    "mocha-lcov-reporter": "*"
   },
   "scripts": {
-    
+    "test": "mocha test/**/*.spec.js --exit",
+    "test-cov": "mocha --require blanket -R html-cov > cov/coverage.html"
   },
   "engines": {
     "node": ">=8.0.0"

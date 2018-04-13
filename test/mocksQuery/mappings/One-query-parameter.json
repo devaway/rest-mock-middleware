@@ -1,0 +1,15 @@
+{
+  "request": {
+    "priority": 1,
+    "urlPath": "/url/one",
+    "queryParameters": {
+      "search": "hello"
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

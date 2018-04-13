@@ -1,0 +1,16 @@
+{
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPath": "/path",
+    "bodyPatterns": {
+      "matchesJsonPath": "$.book[?(@.times < 10)]"
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

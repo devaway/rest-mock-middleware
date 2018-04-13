@@ -1,0 +1,16 @@
+{
+  "request": {
+    "priority": 1,
+    "url": "/app/url/two",
+    "headers": {
+      "Content-type": "application/json",
+      "Accept-Language": "en-US"
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

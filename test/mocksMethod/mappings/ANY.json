@@ -1,0 +1,13 @@
+{
+  "request": {
+    "priority": 1,
+    "method": "ANY",
+    "url": "/app/url/any"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

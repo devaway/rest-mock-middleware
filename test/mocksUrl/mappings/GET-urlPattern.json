@@ -1,0 +1,13 @@
+{
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPattern": "urlP"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

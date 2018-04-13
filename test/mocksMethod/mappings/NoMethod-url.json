@@ -1,0 +1,12 @@
+{
+  "request": {
+    "priority": 1,
+    "url": "/app/url/nomethod"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}
