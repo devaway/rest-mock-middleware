@@ -1,31 +1,34 @@
-var request = require('supertest');
+let chai = require('chai');
+var expect = chai.expect;
+let chaiHttp = require('chai-http');
+
+chai.use(chaiHttp);
+
+let app = require('../../../server')({
+  root_dir: "./mocksQuery"
+});
 describe('Test for the Query Parameters request mapping', function() {
-  var server;
-  before(function() {
-    server = require('../../../server')({
-      root_dir: "./mocksQuery"
-    });
-  });
-  after(function() {
-    server.close(function() {
-      console.log("Closed out remaining connections.");
-    });
-  });
   it('Check the no query parametes request mapping', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/one')
-      .expect(404, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(404);
+      });
   });
   it('Check the one query parametes request mapping', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/one')
       .query({
         search: 'hello'
       })
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check the two query parametes request mapping', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/two')
       .query({
         search: 'hello'
@@ -33,27 +36,36 @@ describe('Test for the Query Parameters request mapping', function() {
       .query({
         name: 'Peter'
       })
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
 
   it('Check the one query parameter name incorrect request mapping', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/one')
       .query({
         no: 'hello'
       })
-      .expect(404, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(404);
+      });
   });
   it('Check the one query parameter value incorrect request mapping', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/one')
       .query({
         search: 'json'
       })
-      .expect(404, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(404);
+      });
   });
   it('Check the two query parameter with one incorrect request mapping', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/two')
       .query({
         search: 'hello'
@@ -61,10 +73,13 @@ describe('Test for the Query Parameters request mapping', function() {
       .query({
         dest: '/login'
       })
-      .expect(404, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(404);
+      });
   });
   it('Check the two query parameter incorrect request mapping', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/two')
       .query({
         format: 'json'
@@ -72,6 +87,9 @@ describe('Test for the Query Parameters request mapping', function() {
       .query({
         dest: '/login'
       })
-      .expect(404, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(404);
+      });
   });
 });

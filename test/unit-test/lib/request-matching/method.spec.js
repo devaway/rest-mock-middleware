@@ -1,79 +1,116 @@
-var request = require('supertest');
+let chai = require('chai');
+var expect = chai.expect;
+let chaiHttp = require('chai-http');
+
+chai.use(chaiHttp);
+
+let app = require('../../../server')({
+  root_dir: "./mocksMethod"
+});
 describe('Test for the Method request mapping', function() {
-  var server;
-  before(function() {
-    server = require('../../../server')({
-      root_dir: "./mocksMethod"
-    });
-  });
-  after(function() {
-    server.close(function() {
-      console.log("Closed out remaining connections.");
-    });
-  });
+
   it('Check the without method', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .post('/app/url/nomethod')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check ANY method', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/any')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check ANY method lowercase', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/any/lowercase')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check GET method', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check GET method lowercase', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .get('/app/url/lowercase')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check POST method', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .post('/app/url')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check POST method lowercase', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .post('/app/url/lowercase')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check PUT method', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .put('/app/url')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check PUT method lowercase', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .put('/app/url/lowercase')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check DELETE method', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .delete('/app/url')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check DELETE method lowercase', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .delete('/app/url/lowercase')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check OPTIONS method', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .options('/app/url')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
   it('Check OPTIONS method lowercase', function testSlash(done) {
-    request(server)
+    chai.request(app)
       .options('/app/url/lowercase')
-      .expect(200, done);
+      .end(function(err, res) {
+        done();
+        expect(res).to.have.status(200);
+      });
   });
 });

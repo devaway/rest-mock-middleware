@@ -15,13 +15,16 @@
   },
   "devDependencies": {
     "express": "^4.16.3",
-    "supertest": "*",
+    "chai": "*",
+    "chai-http": "*",
     "mocha": "*",
-    "mocha-lcov-reporter": "*"
+    "mocha-lcov-reporter": "*",
+    "nyc": "*",
+    "sinon": "*"
   },
   "scripts": {
-    "test": "mocha test/**/*.spec.js --exit",
-    "test-cov": "mocha --require blanket -R html-cov > cov/coverage.html"
+    "test": "mocha --exit test/**/*.spec.js",
+    "test-cov": "nyc --reporter=html mocha test/**/*.spec.js --exit"
   },
   "engines": {
     "node": ">=8.0.0"
