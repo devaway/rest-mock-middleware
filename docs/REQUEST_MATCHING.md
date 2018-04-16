@@ -6,6 +6,7 @@ The current mock middleware supports matching of request to stubs using the foll
 * Query parameters
 * Headers
 * Request body
+* Adding delay
 
 The following sections describes each type of matching strategy in detail.
 
@@ -164,5 +165,19 @@ Request body can be matched by [JSONPath expresion](https://github.com/dchester/
     "..."
   },
   "..."
+}
+```
+
+## Adding delay
+
+All responses can be delayed aggregating *delay* attribute into json request match. Value must be in milliseconds and greater than 0.
+
+Request that respond in 1500 milliseconds or 1,5 seconds.
+```json
+{
+  "request": {
+     "..."
+  },
+  "delay" : 1500
 }
 ```
