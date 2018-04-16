@@ -11,11 +11,11 @@ It is possible to return a status code.
 ```json
 {
   "request": {
-    ...
+    "..."
   },
   "response": {
     "status": 200,
-    ...
+    "..."
   }
 }
 ```
@@ -24,13 +24,13 @@ It is possible to return a custom headers.
 ```json
 {
   "request": {
-    ...
+    "..."
   },
   "response": {
     "headers":  {
             "Content-Type": "application/json"
         },
-    ...
+    "..."
   }
 }
 ```
@@ -39,13 +39,13 @@ It is possible to return a body.
 ```json
 {
   "request": {
-    ...
+    "..."
   },
   "response": {
     "jsonBody": {
       "result": "ok"
     },
-    ...
+    "..."
   }
 }
 ```
@@ -53,11 +53,11 @@ Or it is possible to return a json file path. This path should be relative to `r
 ```json
 {
   "request": {
-    ...
+    "..."
   },
   "response": {
     "bodyFileName": "user.json"
-    ...
+    "..."
   }
 }
 ```

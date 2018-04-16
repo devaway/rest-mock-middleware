@@ -18,9 +18,9 @@ URLs can be matched either by equality or by regular expression. You also have a
 {
   "request": {
      "url": "/your/url?and=query"
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 ### Regex matching on path and query
@@ -28,9 +28,9 @@ URLs can be matched either by equality or by regular expression. You also have a
 {
   "request": {
      "urlPattern": "/your/url/(.)*\\?and=quer(.)*"
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 
@@ -39,9 +39,9 @@ URLs can be matched either by equality or by regular expression. You also have a
 {
   "request": {
      "urlPath": "/your/url"
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 
@@ -50,9 +50,9 @@ URLs can be matched either by equality or by regular expression. You also have a
 {
   "request": {
      "urlPathPattern": "/your/url/(.)*"
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 
@@ -65,9 +65,9 @@ Method can be matched by equality (GET,POST,PUT, DELETE, OPTIONS).
 {
   "request": {
      "method": "GET"
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 
@@ -77,9 +77,9 @@ There are two ways to match with any HTTP method, by not adding the method attri
 {
   "request": {
 	"urlPathPattern": "/your/url/(.)*"
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 
@@ -87,9 +87,9 @@ There are two ways to match with any HTTP method, by not adding the method attri
 {
   "request": {
      "method": "ANY"
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 ## Headers matching
@@ -97,13 +97,13 @@ Headers can be matched by equality.
 ```json
 {
   "request": {
-    ...
+    "..."
     "headers": {
       "Content-Type": "application/json"
       }
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 ## Query parameters matching
@@ -111,13 +111,13 @@ Query parameters can be matched by equality.
 ```json
 {
   "request": {
-    ...
+    "..."
     "queryParameters": {
       "search_term": "abs"
       }
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
 ## Request body
@@ -126,13 +126,13 @@ Request body can be matched by equality.
 ```json
 {
   "request": {
-    ...
+    "..."
     "bodyPatterns": {
       "equalToJson": {
         "total_results": 4
       }
     }
-    ...
+    "..."
   }
 }
 ```
@@ -140,7 +140,7 @@ Request body equality can ignore order in arrays.
 ```json
 {
   "request": {
-    ...
+    "..."
     "bodyPatterns": {
       "equalToJson": [
         {"total_results": 4},
@@ -148,7 +148,7 @@ Request body equality can ignore order in arrays.
       ],
       "ignoreArrayOrder": true
     }
-    ...
+    "..."
   }
 }
 ```
@@ -157,12 +157,12 @@ Request body can be matched by [JSONPath expresion](https://github.com/dchester/
 ```json
 {
   "request": {
-    ...
+    "..."
     "bodyPatterns": {
       "matchesJsonPath": "$.name"
     }
-    ...
+    "..."
   },
-  ...
+  "..."
 }
 ```
