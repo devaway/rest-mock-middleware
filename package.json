@@ -24,7 +24,7 @@
   },
   "scripts": {
     "test": "mocha --exit test/**/*.spec.js",
-    "test-cov": "nyc --reporter=html mocha test/**/*.spec.js --exit"
+    "cover": "nyc --reporter=html mocha test/**/*.spec.js --exit"
   },
   "engines": {
     "node": ">=8.0.0"
