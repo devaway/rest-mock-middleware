@@ -74,7 +74,16 @@ app.use(
   }),
   proxy({
     target: 'http://www.example.org',
-    changeOrigin: true
+    changeOrigin: true,
+    onProxyReq: function(proxyReq, req) {
+      // Fixes issue with POST and PUT requests
+      // This is because Res-mock-middleware uses body-parser and it conflicts with proxy body parser.
+      // More info in github page: http-proxy-middleware/recipes/modify-post.md
+      if ( ( req.method === "POST" || req.method === "PUT" ) && req.body ) {
+        let bodyData = JSON.stringify(req.body);
+        proxyReq.write(bodyData);
+      }
+    }
   })
 );
 app.listen(3000);
