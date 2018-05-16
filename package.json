@@ -1,6 +1,7 @@
 {
   "name": "rest-mock-middleware",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/GFI-Informatique/rest-mock-middleware.git"
