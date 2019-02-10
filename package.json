@@ -15,12 +15,12 @@
     "node-json-equal": "0.1.0"
   },
   "devDependencies": {
-    "express": "^4.16.3",
     "chai": "*",
     "chai-http": "*",
+    "express": "^4.16.3",
     "mocha": "*",
     "mocha-lcov-reporter": "*",
-    "nyc": "*",
+    "nyc": "^13.2.0",
     "sinon": "*"
   },
   "scripts": {
