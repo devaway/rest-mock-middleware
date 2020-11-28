@@ -1,0 +1,18 @@
+{
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPath": "/login",
+    "bodyPatterns": {
+      "matchesSchema": {
+        "schemaFile": "login-schema.json"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

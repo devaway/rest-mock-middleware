@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {
+    "user_name": { "type": "string" },
+    "total_results": { "type": "number" }
+  },
+  "additionalProperties": false
+}
