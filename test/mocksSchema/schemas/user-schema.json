@@ -1,0 +1,13 @@
+{
+  "id": "/schemas/user-schema.json",
+  "type": "object",
+  "properties": {
+    "first_name": { "type": "string" },
+    "last_name": { "type": "string" },
+    "password": { "type": "string" },
+    "email": { "$ref": "/schemas/email-schema.json" },
+    "address": { "$ref": "/schemas/address-schema.json" }
+  },
+  "required": ["first_name"],
+  "additionalProperties": false
+}

@@ -1,8 +1,9 @@
 {
+  "id": "/schemas/login-schema.json",
   "type": "object",
   "properties": {
-    "user_name": { "type": "string" },
-    "total_results": { "type": "number" }
+    "user": { "$ref": "/schemas/user-schema.json"  }
   },
+  "required": ["user"],
   "additionalProperties": false
 }

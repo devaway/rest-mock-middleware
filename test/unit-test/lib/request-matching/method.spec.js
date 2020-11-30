@@ -4,10 +4,14 @@ let chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 
-let app = require('../../../server')({
-  root_dir: "./mocksMethod"
-});
 describe('Test for the Method request mapping', function() {
+  let app = null;
+
+  before(function(){
+    app = require('../../../server')({
+      root_dir: "./mocksMethod",
+    });
+  });
 
   it('Check the without method', function testSlash(done) {
     chai.request(app)

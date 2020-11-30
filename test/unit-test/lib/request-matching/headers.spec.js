@@ -4,10 +4,15 @@ let chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 
-let app = require('../../../server')({
-  root_dir: "./mocksHeaders"
-});
 describe('Test for the Headers request mapping', function() {
+  let app = null;
+
+  before(function(){
+    app = require('../../../server')({
+      root_dir: "./mocksHeaders"
+    });
+  });
+
   it('Check the one header request mapping', function testSlash(done) {
     chai.request(app)
       .get('/app/url/one')

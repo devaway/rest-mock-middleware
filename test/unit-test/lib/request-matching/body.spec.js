@@ -4,11 +4,15 @@ let chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 
-let app = require('../../../server')({
-  root_dir: "./mocksJson"
-});
-
 describe('Test for the Body equalToJson request mapping', function() {
+  let app = null;
+
+  before(function(){
+    app = require('../../../server')({
+      root_dir: "./mocksJson"
+    });
+  });
+  
   it('Check body json equals request mapping', function testSlash(done) {
     chai.request(app)
       .post('/app/login')
@@ -70,6 +74,14 @@ describe('Test for the Body equalToJson request mapping', function() {
 });
 
 describe('Test for the Body matchesJsonPath request mapping', function() {
+  let app = null;
+
+  before(function(){
+    app = require('../../../server')({
+      root_dir: "./mocksJson"
+    });
+  });
+  
   it('Check body json match path request mapping', function testSlash(done) {
     chai.request(app)
       .post('/app/path')

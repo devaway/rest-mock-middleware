@@ -167,17 +167,71 @@ Request body can be matched by [JSONPath expresion](https://github.com/dchester/
   "..."
 }
 ```
+### Body match schema.
+Request body can be matched by a schema [JSON Schema](https://json-schema.org/)
 
-## Adding delay
+Inline schema can also reference schemas stored in `schemas` folder. The reference should be done by using the `schema.id` property.
 
-All responses can be delayed aggregating *delay* attribute into json request match. Value must be in milliseconds and greater than 0.
-
-Request that respond in 1500 milliseconds or 1,5 seconds.
 ```json
 {
   "request": {
-     "..."
+    "..."
+    "bodyPatterns": {
+      "matchesSchema": {
+        "type": "object",
+        "properties": {
+          "street": { "$ref": "/schemas/street-schema.json" },
+          "number": { "type": "number" }
+        },
+        "required": ["street", "number"],
+        "additionalProperties": false
+      }
+    }
+    "..."
   },
-  "delay" : 1500
+  "..."
+}
+```
+
+### Body match scheme file
+All the schemas should be stored in the `schemas` folder. They can be organized in folders.
+Schemas can be referenced internally using `$ref` property.
+```json
+{
+  "request": {
+    "..."
+    "bodyPatterns": {
+      "matchesSchema": {
+        "schemaFile": "user-schema.json"
+      }
+    }
+    "..."
+  },
+  "..."
+}
+```
+
+**user-schema.json**
+```json
+{
+  "id": "/schemas/user-schema.json",
+  "type": "object",
+  "properties": {
+    "first_name": { "type": "string" },
+    "last_name": { "type": "string" },
+    "password": { "type": "string" },
+    "email": { "$ref": "/schemas/email-schema.json" }
+  },
+  "required": ["first_name"],
+  "additionalProperties": false
+}
+```
+
+**email-schema.json**
+```json
+{
+  "id": "/schemas/email-schema.json",
+  "type": "string",
+  "pattern": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$"
 }
 ```

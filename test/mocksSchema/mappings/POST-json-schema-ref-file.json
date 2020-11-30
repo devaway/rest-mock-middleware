@@ -2,14 +2,16 @@
   "request": {
     "priority": 1,
     "method": "POST",
-    "urlPath": "/results",
+    "urlPath": "/user-results",
     "bodyPatterns": {
       "matchesSchema": {
         "schema": {
           "type": "object",
           "properties": {
+            "user": { "$ref": "/schemas/user-schema.json" },
             "total_results": { "type": "number" }
           },
+          "required":["user", "total_results"],
           "additionalProperties": false
         }
       }
