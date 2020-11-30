@@ -13,7 +13,8 @@
     "ajv": "^6.12.6",
     "body-parser": "^1.19.0",
     "jsonpath": "^1.0.2",
-    "node-json-equal": "0.1.0"
+    "node-json-equal": "0.1.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",

@@ -1,0 +1,10 @@
+{
+  "id": "/schemas/address-schema.json",
+  "type": "object",
+  "properties": {
+    "street": { "type": "string" },
+    "number": { "type": "number" }
+  },
+  "required": ["street", "number"],
+  "additionalProperties": false
+}

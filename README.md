@@ -9,6 +9,7 @@ Node.js mock middleware for REST services. Configure REST mocks ease for [expres
 * [Use with proxy](./docs/GETTING_STARTED.md#proxy)
 * [Request matching](./docs/REQUEST_MATCHING.md)
 * [Stubbing](./docs/STUBBING.md)
+* [Response time management](./docs/RESPONSE_TIME.md)
 
 ## Sample
 
