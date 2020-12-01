@@ -1,26 +1,26 @@
-let expect = require("chai").expect;
-let sinon = require("sinon");
-let rest_mock_middleware = require("../../../lib/rest-mock-middleware");
+import { expect } from 'chai';
+import restMockMiddleware from '../../../lib/rest-mock-middleware';
+import sinon from 'sinon';
 
-describe("Test for the rest-mock-middleware sort", function () {
-  it("No config", function (done) {
-    let directories = rest_mock_middleware();
-    var next = sinon.stub();
-    directories(null, null, next);
-    expect(next.calledOnce).to.be.ok;
-    done();
-  });
-  it("Disabled", function (done) {
-    let directories = rest_mock_middleware({ disabled: true });
-    var next = sinon.stub();
-    directories(null, null, next);
-    expect(next.calledOnce).to.be.ok;
-    done();
-  });
-  it("wrong configuration", function (done) {
-    expect(rest_mock_middleware.bind({}, { disabled: false })).to.throw(
-      "[Mock] Mock middleware directory is not configured."
-    );
-    done();
-  });
+describe('Test for the rest-mock-middleware sort', () => {
+    it('No config', (done) => {
+        let directories = restMockMiddleware();
+        var next = sinon.stub();
+        directories(null, null, next);
+        expect(next.calledOnce).to.be.ok; // eslint-disable-line no-unused-expressions
+        done();
+    });
+    it('Disabled', (done) => {
+        let directories = restMockMiddleware({ disabled: true });
+        var next = sinon.stub();
+        directories(null, null, next);
+        expect(next.calledOnce).to.be.ok; // eslint-disable-line no-unused-expressions
+        done();
+    });
+    it('wrong configuration', (done) => {
+        expect(restMockMiddleware.bind({}, { disabled: false })).to.throw(
+            '[Mock] Mock middleware directory is not configured.',
+        );
+        done();
+    });
 });

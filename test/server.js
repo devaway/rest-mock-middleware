@@ -1,18 +1,20 @@
-const express = require('express');
-const restMockMiddleware = require('../index');
-const {
-  resolve
-} = require('path');
+import express from 'express';
+import { resolve } from 'path';
 
-function createServer(options) {
-  var app = express();
-  app.use('/app', restMockMiddleware({
-    root_dir: resolve(__dirname, options.root_dir),
-    logger: options.logger,
-    loggerDebugFilters: options.loggerDebugFilters,
-  }));
+import restMockMiddleware from '../index';
 
-  return app;
-}
+const createServer = (options) => {
+    var app = express();
+    app.use(
+        '/app',
+        restMockMiddleware({
+            root_dir: resolve(__dirname, options.root_dir),
+            logger: options.logger,
+            loggerDebugFilters: options.loggerDebugFilters,
+        }),
+    );
 
-module.exports = createServer;
+    return app;
+};
+
+export default createServer;

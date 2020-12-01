@@ -1,36 +1,48 @@
 {
-  "name": "rest-mock-middleware",
-  "version": "0.0.3",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/devaway/rest-mock-middleware.git"
-  },
-  "description": "REST mock middleware for express",
-  "author": "José Javier Martínez Domene <joseja@devaway.io>",
-  "main": "index.js",
-  "dependencies": {
-    "ajv": "^6.12.6",
-    "body-parser": "^1.19.0",
-    "jsonpath": "^1.0.2",
-    "node-json-equal": "0.1.0",
-    "winston": "^3.3.3"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "express": "^4.17.1",
-    "mocha": "^8.2.1",
-    "mocha-lcov-reporter": "*",
-    "nyc": "^15.1.0",
-    "sinon": "^9.2.1"
-  },
-  "scripts": {
-    "test": "mocha --exit test/**/*.spec.js",
-    "cover": "nyc --reporter=html mocha test/**/*.spec.js --exit"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "license": "MIT"
+    "name": "rest-mock-middleware",
+    "version": "0.0.3",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/devaway/rest-mock-middleware.git"
+    },
+    "description": "REST mock middleware for express",
+    "author": "José Javier Martínez Domene <joseja@devaway.io>",
+    "main": "index.js",
+    "dependencies": {
+        "ajv": "^6.12.6",
+        "body-parser": "^1.19.0",
+        "jsonpath": "^1.0.2",
+        "node-json-equal": "0.1.0",
+        "winston": "^3.3.3"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "chai-http": "^4.3.0",
+        "eslint": "^7.14.0",
+        "eslint-plugin-chai-expect": "^2.2.0",
+        "esm": "^3.2.25",
+        "express": "^4.17.1",
+        "husky": "^5.0.4",
+        "mocha": "^8.2.1",
+        "mocha-lcov-reporter": "*",
+        "nyc": "^15.1.0",
+        "pinst": "^2.1.1",
+        "prettier": "2.2.1",
+        "sinon": "^9.2.1"
+    },
+    "scripts": {
+        "test": "mocha --exit  --require esm test/**/*.spec.js",
+        "cover": "nyc --reporter=html mocha test/**/*.spec.js --exit",
+        "lint": "eslint ./lib ./test",
+        "prettier:format": "prettier --write ./lib ./test",
+        "prettier:check": "prettier --check ./lib ./test",
+        "postinstall": "husky install",
+        "prepublish": "pinst --disable",
+        "postpublish": "pinst --enable"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "license": "MIT"
 }
