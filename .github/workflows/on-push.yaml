@@ -20,6 +20,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm run build --if-present
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm test
         env:
           CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
