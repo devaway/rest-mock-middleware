@@ -1,26 +1,26 @@
 {
-    "request": {
-        "priority": 1,
-        "method": "POST",
-        "urlPath": "/user-results",
-        "bodyPatterns": {
-            "matchesSchema": {
-                "schema": {
-                    "type": "object",
-                    "properties": {
-                        "user": { "$ref": "/schemas/user-schema.json" },
-                        "total_results": { "type": "number" }
-                    },
-                    "required": ["user", "total_results"],
-                    "additionalProperties": false
-                }
-            }
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPath": "/user-results",
+    "bodyPatterns": {
+      "matchesSchema": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "user": { "$ref": "/schemas/user-schema.json" },
+            "total_results": { "type": "number" }
+          },
+          "required": ["user", "total_results"],
+          "additionalProperties": false
         }
-    },
-    "response": {
-        "status": 200,
-        "jsonBody": {
-            "result": "ok"
-        }
+      }
     }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
 }

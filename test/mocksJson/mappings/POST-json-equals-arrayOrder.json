@@ -1,24 +1,24 @@
 {
-    "request": {
-        "priority": 1,
-        "method": "POST",
-        "urlPath": "/login",
-        "bodyPatterns": {
-            "equalToJson": [
-                {
-                    "total_results": 5
-                },
-                {
-                    "total_results": 4
-                }
-            ],
-            "ignoreArrayOrder": false
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPath": "/login",
+    "bodyPatterns": {
+      "equalToJson": [
+        {
+          "total_results": 5
+        },
+        {
+          "total_results": 4
         }
-    },
-    "response": {
-        "status": 200,
-        "jsonBody": {
-            "result": "ok"
-        }
+      ],
+      "ignoreArrayOrder": false
     }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
 }

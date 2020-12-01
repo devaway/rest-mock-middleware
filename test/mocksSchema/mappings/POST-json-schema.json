@@ -1,24 +1,24 @@
 {
-    "request": {
-        "priority": 1,
-        "method": "POST",
-        "urlPath": "/results",
-        "bodyPatterns": {
-            "matchesSchema": {
-                "schema": {
-                    "type": "object",
-                    "properties": {
-                        "total_results": { "type": "number" }
-                    },
-                    "additionalProperties": false
-                }
-            }
+  "request": {
+    "priority": 1,
+    "method": "POST",
+    "urlPath": "/results",
+    "bodyPatterns": {
+      "matchesSchema": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "total_results": { "type": "number" }
+          },
+          "additionalProperties": false
         }
-    },
-    "response": {
-        "status": 200,
-        "jsonBody": {
-            "result": "ok"
-        }
+      }
     }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
 }
