@@ -6,7 +6,6 @@
       "search": "hello",
       "name": "Peter"
     }
-
   },
   "response": {
     "status": 200,

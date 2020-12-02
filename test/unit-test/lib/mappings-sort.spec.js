@@ -1,35 +1,36 @@
-let expect = require('chai').expect;
-let mapping_sort = require('../../../lib/mappings-sort');
+import { expect } from 'chai';
 
-describe('Test for the mapping sort', function() {
-  it('Sort correctly', function(done) {
+import mapping_sort from '../../../lib/mappings-sort';
+
+describe('Test for the mapping sort', () => {
+  it('Sort correctly', (done) => {
     let mappings = [
       {
-        "request": {
-          "priority": 2,
-          "method": "POST",
-          "url": "/app/url"
+        request: {
+          priority: 2,
+          method: 'POST',
+          url: '/app/url',
         },
-        "response": {
-          "status": 200,
-          "jsonBody": {
-            "result": "ok"
-          }
-        }
+        response: {
+          status: 200,
+          jsonBody: {
+            result: 'ok',
+          },
+        },
       },
       {
-        "request": {
-          "priority": 1,
-          "method": "POST",
-          "url": "/app/url"
+        request: {
+          priority: 1,
+          method: 'POST',
+          url: '/app/url',
         },
-        "response": {
-          "status": 200,
-          "jsonBody": {
-            "result": "ok"
-          }
-        }
-      }
+        response: {
+          status: 200,
+          jsonBody: {
+            result: 'ok',
+          },
+        },
+      },
     ];
     let mapping_result = Array.from(mapping_sort(mappings).values());
     expect(mapping_result[0].request.priority).to.equal(1);
@@ -37,50 +38,51 @@ describe('Test for the mapping sort', function() {
     done();
   });
 
-  it('Sort correctly', function(done) {
+  it('Sort correctly', (done) => {
     let mappings = [
       {
-        "request": {
-          "priority": 2,
-          "method": "POST",
-          "url": "/app/url"
+        request: {
+          priority: 2,
+          method: 'POST',
+          url: '/app/url',
         },
-        "response": {
-          "status": 200,
-          "jsonBody": {
-            "result": "ok"
-          }
-        }
+        response: {
+          status: 200,
+          jsonBody: {
+            result: 'ok',
+          },
+        },
       },
       {
-        "request": {
-          "method": "POST",
-          "url": "/app/url"
+        request: {
+          method: 'POST',
+          url: '/app/url',
         },
-        "response": {
-          "status": 200,
-          "jsonBody": {
-            "result": "ok"
-          }
-        }
-      },  {
-          "request": {
-            "priority": 1,
-            "method": "POST",
-            "url": "/app/url"
+        response: {
+          status: 200,
+          jsonBody: {
+            result: 'ok',
           },
-          "response": {
-            "status": 200,
-            "jsonBody": {
-              "result": "ok"
-            }
-          }
-        }
+        },
+      },
+      {
+        request: {
+          priority: 1,
+          method: 'POST',
+          url: '/app/url',
+        },
+        response: {
+          status: 200,
+          jsonBody: {
+            result: 'ok',
+          },
+        },
+      },
     ];
     let mapping_result = Array.from(mapping_sort(mappings).values());
     expect(mapping_result[0].request.priority).to.equal(1);
     expect(mapping_result[1].request.priority).to.equal(2);
-    expect(mapping_result[2].request.priority).to.be.undefined;
+    expect(mapping_result[2].request.priority).to.be.undefined; // eslint-disable-line no-unused-expressions
     done();
   });
 });

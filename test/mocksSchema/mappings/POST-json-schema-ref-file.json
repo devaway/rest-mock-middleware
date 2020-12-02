@@ -11,7 +11,7 @@
             "user": { "$ref": "/schemas/user-schema.json" },
             "total_results": { "type": "number" }
           },
-          "required":["user", "total_results"],
+          "required": ["user", "total_results"],
           "additionalProperties": false
         }
       }

@@ -2,7 +2,7 @@
   "id": "/schemas/login-schema.json",
   "type": "object",
   "properties": {
-    "user": { "$ref": "/schemas/user-schema.json"  }
+    "user": { "$ref": "/schemas/user-schema.json" }
   },
   "required": ["user"],
   "additionalProperties": false

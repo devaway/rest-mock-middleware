@@ -1,120 +1,173 @@
-let chai = require('chai');
-var expect = chai.expect;
-let chaiHttp = require('chai-http');
+import chai, { expect } from 'chai';
+import chaiHttp from 'chai-http';
+
+import createServer from '../../../server';
 
 chai.use(chaiHttp);
 
-describe('Test for the Method request mapping', function() {
+describe('Test for the Method request mapping', () => {
   let app = null;
 
-  before(function(){
-    app = require('../../../server')({
-      root_dir: "./mocksMethod",
+  before(() => {
+    app = createServer({
+      root_dir: './mocksMethod',
     });
   });
 
-  it('Check the without method', function testSlash(done) {
-    chai.request(app)
+  it('Check the without method', (done) => {
+    chai
+      .request(app)
       .post('/app/url/nomethod')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check ANY method', function testSlash(done) {
-    chai.request(app)
+  it('Check ANY method', (done) => {
+    chai
+      .request(app)
       .get('/app/url/any')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check ANY method lowercase', function testSlash(done) {
-    chai.request(app)
+  it('Check ANY method lowercase', (done) => {
+    chai
+      .request(app)
       .get('/app/url/any/lowercase')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check GET method', function testSlash(done) {
-    chai.request(app)
+  it('Check GET method', (done) => {
+    chai
+      .request(app)
       .get('/app/url')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check GET method lowercase', function testSlash(done) {
-    chai.request(app)
+  it('Check GET method lowercase', (done) => {
+    chai
+      .request(app)
       .get('/app/url/lowercase')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check POST method', function testSlash(done) {
-    chai.request(app)
+  it('Check POST method', (done) => {
+    chai
+      .request(app)
       .post('/app/url')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check POST method lowercase', function testSlash(done) {
-    chai.request(app)
+  it('Check POST method lowercase', (done) => {
+    chai
+      .request(app)
       .post('/app/url/lowercase')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check PUT method', function testSlash(done) {
-    chai.request(app)
+  it('Check PUT method', (done) => {
+    chai
+      .request(app)
       .put('/app/url')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check PUT method lowercase', function testSlash(done) {
-    chai.request(app)
+  it('Check PUT method lowercase', (done) => {
+    chai
+      .request(app)
       .put('/app/url/lowercase')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check DELETE method', function testSlash(done) {
-    chai.request(app)
+  it('Check DELETE method', (done) => {
+    chai
+      .request(app)
       .delete('/app/url')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check DELETE method lowercase', function testSlash(done) {
-    chai.request(app)
+  it('Check DELETE method lowercase', (done) => {
+    chai
+      .request(app)
       .delete('/app/url/lowercase')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check OPTIONS method', function testSlash(done) {
-    chai.request(app)
+  it('Check OPTIONS method', (done) => {
+    chai
+      .request(app)
       .options('/app/url')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check OPTIONS method lowercase', function testSlash(done) {
-    chai.request(app)
+  it('Check OPTIONS method lowercase', (done) => {
+    chai
+      .request(app)
       .options('/app/url/lowercase')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
 });

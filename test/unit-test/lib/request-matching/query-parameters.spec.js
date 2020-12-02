@@ -1,100 +1,129 @@
-let chai = require('chai');
-var expect = chai.expect;
-let chaiHttp = require('chai-http');
+import chai, { expect } from 'chai';
+import chaiHttp from 'chai-http';
+
+import createServer from '../../../server';
 
 chai.use(chaiHttp);
 
-describe('Test for the Query Parameters request mapping', function() {
+describe('Test for the Query Parameters request mapping', () => {
   let app = null;
 
-  before(function(){
-    app = require('../../../server')({
-      root_dir: "./mocksQuery"
+  before(() => {
+    app = createServer({
+      root_dir: './mocksQuery',
     });
   });
-  
-  it('Check the no query parametes request mapping', function testSlash(done) {
-    chai.request(app)
+
+  it('Check the no query parametes request mapping', (done) => {
+    chai
+      .request(app)
       .get('/app/url/one')
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(404);
+        done();
       });
   });
-  it('Check the one query parametes request mapping', function testSlash(done) {
-    chai.request(app)
+  it('Check the one query parametes request mapping', (done) => {
+    chai
+      .request(app)
       .get('/app/url/one')
       .query({
-        search: 'hello'
+        search: 'hello',
       })
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
-  it('Check the two query parametes request mapping', function testSlash(done) {
-    chai.request(app)
+  it('Check the two query parametes request mapping', (done) => {
+    chai
+      .request(app)
       .get('/app/url/two')
       .query({
-        search: 'hello'
+        search: 'hello',
       })
       .query({
-        name: 'Peter'
+        name: 'Peter',
       })
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(200);
+        done();
       });
   });
 
-  it('Check the one query parameter name incorrect request mapping', function testSlash(done) {
-    chai.request(app)
+  it('Check the one query parameter name incorrect request mapping', (done) => {
+    chai
+      .request(app)
       .get('/app/url/one')
       .query({
-        no: 'hello'
+        no: 'hello',
       })
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(404);
+        done();
       });
   });
-  it('Check the one query parameter value incorrect request mapping', function testSlash(done) {
-    chai.request(app)
+  it('Check the one query parameter value incorrect request mapping', (done) => {
+    chai
+      .request(app)
       .get('/app/url/one')
       .query({
-        search: 'json'
+        search: 'json',
       })
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(404);
+        done();
       });
   });
-  it('Check the two query parameter with one incorrect request mapping', function testSlash(done) {
-    chai.request(app)
+  it('Check the two query parameter with one incorrect request mapping', (done) => {
+    chai
+      .request(app)
       .get('/app/url/two')
       .query({
-        search: 'hello'
+        search: 'hello',
       })
       .query({
-        dest: '/login'
+        dest: '/login',
       })
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(404);
+        done();
       });
   });
-  it('Check the two query parameter incorrect request mapping', function testSlash(done) {
-    chai.request(app)
+  it('Check the two query parameter incorrect request mapping', (done) => {
+    chai
+      .request(app)
       .get('/app/url/two')
       .query({
-        format: 'json'
+        format: 'json',
       })
       .query({
-        dest: '/login'
+        dest: '/login',
       })
-      .end(function(err, res) {
-        done();
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res).to.have.status(404);
+        done();
       });
   });
 });
