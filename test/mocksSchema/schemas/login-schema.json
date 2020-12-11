@@ -1,5 +1,5 @@
 {
-  "id": "/schemas/login-schema.json",
+  "$id": "/schemas/login-schema.json",
   "type": "object",
   "properties": {
     "user": { "$ref": "/schemas/user-schema.json" }

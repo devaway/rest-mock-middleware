@@ -132,7 +132,7 @@ describe('Test for the Schema matching request mapping', () => {
       .send({
         user: {
           first_name: 'Peter',
-          second_name: 'Smith',
+          last_name: 'Smith',
           password: '12345',
           email: 'peter.smith@ps.com',
           address: {
