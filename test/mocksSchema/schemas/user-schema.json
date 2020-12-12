@@ -1,5 +1,5 @@
 {
-  "id": "/schemas/user-schema.json",
+  "$id": "/schemas/user-schema.json",
   "type": "object",
   "properties": {
     "first_name": { "type": "string" },
