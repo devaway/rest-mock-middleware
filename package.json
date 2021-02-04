@@ -38,7 +38,6 @@
     "lint": "eslint ./lib ./test",
     "prettier:format": "prettier --write ./lib ./test",
     "prettier:check": "prettier --check ./lib ./test",
-    "postinstall": "husky install",
     "prepublish": "pinst --disable",
     "postpublish": "pinst --enable"
   },
