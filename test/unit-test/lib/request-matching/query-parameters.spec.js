@@ -1,8 +1,7 @@
-import { validateReturnsKO, validateReturnsOk } from '../utils/request';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-
 import createServer from '../../../createServer';
+import { validateStatus } from '../../utils/validators';
 
 chai.use(chaiHttp);
 
@@ -16,7 +15,7 @@ describe('Test for the Query Parameters request mapping', () => {
   });
 
   it('Check the no query parametes request mapping', (done) => {
-    chai.request(app).get('/app/url/one').end(validateReturnsKO(done));
+    chai.request(app).get('/app/url/one').end(validateStatus(done, 404));
   });
   it('Check the one query parametes request mapping', (done) => {
     chai
@@ -25,7 +24,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         search: 'hello',
       })
-      .end(validateReturnsOk(done));
+      .end(validateStatus(done, 200));
   });
   it('Check the two query parametes request mapping', (done) => {
     chai
@@ -37,7 +36,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         name: 'Peter',
       })
-      .end(validateReturnsOk(done));
+      .end(validateStatus(done, 200));
   });
 
   it('Check the one query parameter name incorrect request mapping', (done) => {
@@ -47,7 +46,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         no: 'hello',
       })
-      .end(validateReturnsKO(done));
+      .end(validateStatus(done, 404));
   });
   it('Check the one query parameter value incorrect request mapping', (done) => {
     chai
@@ -56,7 +55,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         search: 'json',
       })
-      .end(validateReturnsKO(done));
+      .end(validateStatus(done, 404));
   });
   it('Check the two query parameter with one incorrect request mapping', (done) => {
     chai
@@ -68,7 +67,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         dest: '/login',
       })
-      .end(validateReturnsKO(done));
+      .end(validateStatus(done, 404));
   });
   it('Check the two query parameter incorrect request mapping', (done) => {
     chai
@@ -80,6 +79,6 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         dest: '/login',
       })
-      .end(validateReturnsKO(done));
+      .end(validateStatus(done, 404));
   });
 });
