@@ -1,6 +1,5 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-
 import createServer from '../../../createServer';
 import { validateStatus } from '../../utils/validators';
 

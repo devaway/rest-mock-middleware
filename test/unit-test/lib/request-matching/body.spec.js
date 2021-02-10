@@ -1,9 +1,25 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-
 import createServer from '../../../createServer';
 
 chai.use(chaiHttp);
+
+const validateRequest = (app, testCase) => {
+  it(testCase.name, (done) => {
+    chai
+      .request(app)
+      .post(testCase.url)
+      .type('application/json')
+      .send(testCase.body)
+      .end((err, res) => {
+        if (err) {
+          done(err);
+        }
+        expect(res).to.have.status(testCase.status);
+        done();
+      });
+  });
+};
 
 describe('Test for the Body equalToJson request mapping', () => {
   const app = createServer({
@@ -52,20 +68,7 @@ describe('Test for the Body equalToJson request mapping', () => {
   ];
 
   for (const testCase of testCases) {
-    it(testCase.name, (done) => {
-      chai
-        .request(app)
-        .post(testCase.url)
-        .type('application/json')
-        .send(testCase.body)
-        .end((err, res) => {
-          if (err) {
-            done(err);
-          }
-          expect(res).to.have.status(testCase.status);
-          done();
-        });
-    });
+    validateRequest(app, testCase);
   }
 
   it('404 everything else', (done) => {
@@ -131,19 +134,6 @@ describe('Test for the Body matchesJsonPath request mapping', () => {
   ];
 
   for (const testCase of testCases) {
-    it(testCase.name, (done) => {
-      chai
-        .request(app)
-        .post(testCase.url)
-        .type('application/json')
-        .send(testCase.body)
-        .end((err, res) => {
-          if (err) {
-            done(err);
-          }
-          expect(res).to.have.status(testCase.status);
-          done();
-        });
-    });
+    validateRequest(app, testCase);
   }
 });
