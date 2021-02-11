@@ -2,6 +2,8 @@
 
 Node.js mock middleware for REST services. Configure REST mocks ease for [express](http://expressjs.com/).
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=devaway_rest-mock-middleware&metric=alert_status)](https://sonarcloud.io/dashboard?id=devaway_rest-mock-middleware)
+
 ## TL;DR
 
 Captures `/api` requests and when `/api/users/me` is called with right authorization it returns a mock user.
