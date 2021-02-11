@@ -32,6 +32,9 @@ jobs:
             -Dsonar.organization=devaway
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.testExecutionReportPaths=reports/test-report.xml
+            -Dsonar.sources=lib/
+            -Dsonar.test.exclusions=test/**
+            -Dsonar.tests=test/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
