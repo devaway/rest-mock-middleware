@@ -35,7 +35,7 @@
   },
   "scripts": {
     "test": "mocha --exit  --require esm test/**/*.spec.js",
-    "test:ci": "mocha --require esm --reporter mocha-sonarqube-reporter test/**/*.spec.js --reporter-options output=xunit.xml --exit",
+    "test:ci": "mocha --require esm --reporter mocha-sonarqube-reporter test/**/*.spec.js --reporter-options output=reports/test-report.xml --exit",
     "cover": "nyc --reporter=html mocha --require esm test/**/*.spec.js --exit",
     "cover:ci": "nyc --reporter=lcov --reporter=text-lcov mocha --require esm test/**/*.spec.js --exit",
     "lint": "eslint ./lib ./test",
