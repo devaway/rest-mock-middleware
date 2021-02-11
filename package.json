@@ -35,6 +35,7 @@
   "scripts": {
     "test": "mocha --exit  --require esm test/**/*.spec.js",
     "cover": "nyc --reporter=html mocha --require esm test/**/*.spec.js --exit",
+    "cover:ci": "nyc --reporter=lcov --reporter=text-lcov mocha --require esm test/**/*.spec.js --exit",
     "lint": "eslint ./lib ./test",
     "prettier:format": "prettier --write ./lib ./test",
     "prettier:check": "prettier --check ./lib ./test",
