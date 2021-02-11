@@ -2,18 +2,8 @@
 
 ## Install
 
-By npm:
-
 ```console
-$ npm install https://github.com/GFI-Informatique/rest-mock-middleware.git
-```
-
-By package.json:
-
-```json
-"dependencies": {
-  "rest-mock-middleware": "https://github.com/GFI-Informatique/rest-mock-middleware.git"
-}
+$ npm install --save-dev @devaway/rest-mock-middleware
 ```
 
 ## Usage

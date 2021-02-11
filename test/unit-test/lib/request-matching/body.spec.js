@@ -124,7 +124,7 @@ describe('Test for the Body matchesJsonPath request mapping', () => {
       status: 200,
     },
     {
-      name: 'Check body json match path mapping with incorrect pat',
+      name: 'Check body json match path mapping with incorrect path',
       url: '/app/path',
       body: {
         total_results: 4,
