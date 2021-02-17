@@ -1,7 +1,7 @@
-import chai, { expect } from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
-
-import createServer from '../../../server';
+import createServer from '../../../createServer';
+import { validateStatus } from '../../utils/validators';
 
 chai.use(chaiHttp);
 
@@ -15,52 +15,16 @@ describe('Test for the URL request mapping', () => {
   });
 
   it('Check the "url" request mapping', (done) => {
-    chai
-      .request(app)
-      .post('/app/url')
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+    chai.request(app).post('/app/url').end(validateStatus(done, 200));
   });
   it('Check the "urlPattern" request mapping', (done) => {
-    chai
-      .request(app)
-      .post('/app/urlPattern')
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+    chai.request(app).post('/app/urlPattern').end(validateStatus(done, 200));
   });
 
   it('Check the "urlPath" request mapping', (done) => {
-    chai
-      .request(app)
-      .post('/app/path')
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+    chai.request(app).post('/app/path').end(validateStatus(done, 200));
   });
   it('Check the "urlPathPattern" request mapping', (done) => {
-    chai
-      .request(app)
-      .post('/app/pathPattern')
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+    chai.request(app).post('/app/pathPattern').end(validateStatus(done, 200));
   });
 });

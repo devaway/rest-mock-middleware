@@ -1,0 +1,21 @@
+{
+  "request": {
+    "priority": 1,
+    "urlPath": "/url/schema",
+    "querySchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "start_date": { "type": "string" },
+        "end_date": { "type": "string" }
+      },
+      "required": ["start_date", "end_date"]
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "result": "ok"
+    }
+  }
+}

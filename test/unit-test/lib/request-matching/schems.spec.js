@@ -1,7 +1,7 @@
-import chai, { expect } from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
-
-import createServer from '../../../server';
+import createServer from '../../../createServer';
+import { validateStatus } from '../../utils/validators';
 
 chai.use(chaiHttp);
 
@@ -22,13 +22,7 @@ describe('Test for the Schema matching request mapping', () => {
       .send({
         total_results: 4,
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+      .end(validateStatus(done, 200));
   });
   it('Check body json not match request schema because too mach attributes', (done) => {
     chai
@@ -39,13 +33,7 @@ describe('Test for the Schema matching request mapping', () => {
         total_results: 4,
         error: true,
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+      .end(validateStatus(done, 404));
   });
   it('Check body json match request schema file', (done) => {
     chai
@@ -64,13 +52,7 @@ describe('Test for the Schema matching request mapping', () => {
           },
         },
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+      .end(validateStatus(done, 200));
   });
   it('Check body json not match request schema file because too mach attributes', (done) => {
     chai
@@ -90,13 +72,7 @@ describe('Test for the Schema matching request mapping', () => {
         },
         error: true,
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+      .end(validateStatus(done, 404));
   });
   it('Check body json match request schema that refs a file', (done) => {
     chai
@@ -116,13 +92,7 @@ describe('Test for the Schema matching request mapping', () => {
         },
         total_results: 4,
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+      .end(validateStatus(done, 200));
   });
   it('Check body json equals request schema with too mach attributes', (done) => {
     chai
@@ -142,12 +112,6 @@ describe('Test for the Schema matching request mapping', () => {
         },
         error: true,
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+      .end(validateStatus(done, 404));
   });
 });

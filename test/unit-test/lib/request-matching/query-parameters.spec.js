@@ -1,7 +1,7 @@
-import chai, { expect } from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
-
-import createServer from '../../../server';
+import createServer from '../../../createServer';
+import { validateStatus } from '../../utils/validators';
 
 chai.use(chaiHttp);
 
@@ -15,16 +15,7 @@ describe('Test for the Query Parameters request mapping', () => {
   });
 
   it('Check the no query parametes request mapping', (done) => {
-    chai
-      .request(app)
-      .get('/app/url/one')
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+    chai.request(app).get('/app/url/one').end(validateStatus(done, 404));
   });
   it('Check the one query parametes request mapping', (done) => {
     chai
@@ -33,13 +24,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         search: 'hello',
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+      .end(validateStatus(done, 200));
   });
   it('Check the two query parametes request mapping', (done) => {
     chai
@@ -51,13 +36,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         name: 'Peter',
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(200);
-        done();
-      });
+      .end(validateStatus(done, 200));
   });
 
   it('Check the one query parameter name incorrect request mapping', (done) => {
@@ -67,13 +46,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         no: 'hello',
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+      .end(validateStatus(done, 404));
   });
   it('Check the one query parameter value incorrect request mapping', (done) => {
     chai
@@ -82,13 +55,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         search: 'json',
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+      .end(validateStatus(done, 404));
   });
   it('Check the two query parameter with one incorrect request mapping', (done) => {
     chai
@@ -100,13 +67,7 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         dest: '/login',
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+      .end(validateStatus(done, 404));
   });
   it('Check the two query parameter incorrect request mapping', (done) => {
     chai
@@ -118,12 +79,36 @@ describe('Test for the Query Parameters request mapping', () => {
       .query({
         dest: '/login',
       })
-      .end((err, res) => {
-        if (err) {
-          done(err);
-        }
-        expect(res).to.have.status(404);
-        done();
-      });
+      .end(validateStatus(done, 404));
+  });
+  it('Check the two query parameter with a schema', (done) => {
+    chai
+      .request(app)
+      .get('/app/url/schema')
+      .query({
+        start_date: '01/04/2021',
+        end_date: '30/04/2021',
+      })
+      .end(validateStatus(done, 200));
+  });
+  it('Check parameters with a schema having extra parameters', (done) => {
+    chai
+      .request(app)
+      .get('/app/url/schema')
+      .query({
+        start_date: '01/04/2021',
+        end_date: '30/04/2021',
+        extra_parameter: 'true',
+      })
+      .end(validateStatus(done, 404));
+  });
+  it('Check parameters with a schema having missing parameters', (done) => {
+    chai
+      .request(app)
+      .get('/app/url/schema')
+      .query({
+        start_date: '01/04/2021',
+      })
+      .end(validateStatus(done, 404));
   });
 });

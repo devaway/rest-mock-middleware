@@ -108,6 +108,7 @@ Headers can be matched by equality.
 }
 ```
 ## Query parameters matching
+### Query equality matching
 Query parameters can be matched by equality.
 ```json
 {
@@ -115,6 +116,26 @@ Query parameters can be matched by equality.
     "..."
     "queryParameters": {
       "search_term": "abs"
+      }
+    "..."
+  },
+  "..."
+}
+```
+### Query schema matching
+Query parameters can be matched by equality.
+```json
+{
+  "request": {
+    "..."
+    "querySchema":  {
+        "type": "object",
+        "properties": {
+          "sort": { "type": "string" },
+          "direction": { "type": "string" }
+        },
+        "required": ["sort", "direction"],
+        "additionalProperties": false
       }
     "..."
   },
