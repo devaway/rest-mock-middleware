@@ -81,4 +81,34 @@ describe('Test for the Query Parameters request mapping', () => {
       })
       .end(validateStatus(done, 404));
   });
+  it('Check the two query parameter with a schema', (done) => {
+    chai
+      .request(app)
+      .get('/app/url/schema')
+      .query({
+        start_date: '01/04/2021',
+        end_date: '30/04/2021',
+      })
+      .end(validateStatus(done, 200));
+  });
+  it('Check parameters with a schema having extra parameters', (done) => {
+    chai
+      .request(app)
+      .get('/app/url/schema')
+      .query({
+        start_date: '01/04/2021',
+        end_date: '30/04/2021',
+        extra_parameter: 'true',
+      })
+      .end(validateStatus(done, 404));
+  });
+  it('Check parameters with a schema having missing parameters', (done) => {
+    chai
+      .request(app)
+      .get('/app/url/schema')
+      .query({
+        start_date: '01/04/2021',
+      })
+      .end(validateStatus(done, 404));
+  });
 });
